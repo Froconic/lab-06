@@ -1,23 +1,18 @@
 'use strict';
 
+var hours = ['6:00', '7:00', '8:00', '9:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00'];
+var cookieHours = ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'];
+
 var firstAndPike = {
   minCustomers: 23,
   maxCustomers: 65,
   avgCookie: 6.3,
-  randomNum: function ()
+  randomNum: function (max, min)
   {
-    return Math.floor(Math.random(23) * Math.floor(65));
-  },
+    min = Math.ceil(min);
+    max = Math.floor(max);
 
-  hours: ['6:00', '7:00', '8:00', '9:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00'],
-  totalSold: function () {
-    for (var i = 0; i < hours.length; i++)
-    {
-      var cookieSum = '0';
-      cookieSum = cookieSum + cookiePerHour;
-    }
-
-    return cookieSum;
+    return Math.floor(Math.random() * (max - min)) + min;
   },
 };
 
@@ -31,91 +26,85 @@ var seaTacAirport = {
   },
 
   hours: ['6:00', '7:00', '8:00', '9:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00'],
-  totalSold: function () {
-    for (var i = 0; i < hours.length; i++)
-    {
-      var cookieSum = '0';
-      cookieSum = cookieSum + cookiePerHour;
-    }
-
-    return cookieSum;
-
-  },
 };
 
 var seattleCenter = {
   minCustomers: 11,
   maxCustomers: 38,
   avgCookie: 3.7,
-  randomNum: function ()
+  randomNum: function (max, min)
   {
-    return Math.floor(Math.random(11) * Math.floor(38));
+    min = Math.ceil(min);
+    max = Math.floor(max);
+
+    return Math.floor(Math.random() * (max - min)) + min;
   },
 
   hours: ['6:00', '7:00', '8:00', '9:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00'],
-  totalSold: function () {
-    for (var i = 0; i < this.hours.length; i++)
-    {
-      var cookieSum = '0';
-      cookieSum = cookieSum + cookiePerHour;
-    }
-
-    return cookieSum;
-
-  },
 };
 
 var capitolHill = {
   minCustomers: 20,
   maxCustomers: 38,
   avgCookie: 2.3,
-  randomNum: function ()
+  randomNum: function (max, min)
   {
-    return Math.floor(Math.random(20) * Math.floor(38));
+    min = Math.ceil(min);
+    max = Math.floor(max);
+
+    return Math.floor(Math.random() * (max - min)) + min;
   },
 
   hours: ['6:00', '7:00', '8:00', '9:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00'],
-  totalSold: function () {
-    for (var i = 0; i < hours.length; i++)
-    {
-      var cookieSum = '0';
-      cookieSum = cookieSum + cookiePerHour;
-    }
-
-    return cookieSum;
-
-  },
 };
 
 var aiki = {
   minCustomers: 2,
   maxCustomers: 16,
   avgCookie: 4.6,
-  randomNum: function ()
+  randomNum: function (max, min)
   {
-    return Math.floor(Math.random(2) * Math.floor(16));
+    min = Math.ceil(min);
+    max = Math.floor(max);
+
+    return Math.floor(Math.random() * (max - min)) + min;
   },
 
   hours: ['6:00', '7:00', '8:00', '9:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00'],
-  totalSold: function () {
-    for (var i = 0; i < hours.length; i++)
-    {
-      var cookieSum = '0';
-      cookieSum = cookieSum + cookiePerHour;
-    }
-
-    return cookieSum;
-
-  },
 };
 
 function cookieperHour(obj)
 {
+  var min = obj.minCustomers;
+  var max = obj.maxCustomers;
+
   var cookie = obj.avgCookie;
-  var customerAmount = obj.randomNum;
+  console.log(cookie);
+  var customerAmount = obj.randomNum(min, max);
+  console.log(customerAmount);
   var hourlyCookies = customerAmount * cookie;
-  return Number(hourlyCookies);
+  console.log(hourlyCookies);
+  return hourlyCookies;
 }
 
+function totalSold(obj) {
+  for (var i = 0; i < hours.length; i++)
+  {
+
+    var amount = cookiePerHour(obj);
+    console.log(amount);
+    var cookieSum = '0';
+    cookieSum = cookieSum + amount;
+    console.log(cookieSum);
+    cookieHours[i] = cookieSum;
+    console.log(cookieHours);
+  }
+
+  return CookieSum;
+};
+
+// console.log(totalSold(firstAndPike));
 console.log(cookieperHour(firstAndPike));
-console.log(firstAndPike.randomNum());
+// console.log(firstAndPike.randomNum(minimum, maximum));
+
+// console.log(firstAndPike.randomNum());
