@@ -88,7 +88,7 @@ function cookiePerHour(obj)
   return sanHourlyCookies;
 }
 
-cookiePerHour(firstAndPike);
+// cookiePerHour(firstAndPike);
 
 function cookieArrayCreator(obj) {
   for (var i = 0; i < hours.length; i++)
@@ -115,11 +115,27 @@ function sum(obj) {
   }
 
   console.log(total);
-
+  return total;
   // return total;
 };
 
-console.log(sum(firstAndPike));
+function finalOutput(obj) {
+  var results = cookieArrayCreator(obj);
+  var finalSum = sum(obj);
+
+  for (var i = 0; i < hours.length; i++) {
+    results[i] = `${hours[i]}: ${results[i]} cookies`;
+    console.log(results[i]);
+  }
+
+  finalSum = `Total: ${finalSum} cookies`;
+  console.log(finalSum);
+
+};
+
+console.log(finalOutput(firstAndPike));
+
+// console.log(sum(firstAndPike));
 
 // console.log(cookieArrayCreator(firstAndPike));
 
