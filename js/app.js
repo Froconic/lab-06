@@ -1,7 +1,7 @@
 'use strict';
 
 var hours = ['6:00', '7:00', '8:00', '9:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00'];
-var cookieHours = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+var cookieArray = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
 var firstAndPike = {
   minCustomers: 23,
@@ -90,24 +90,38 @@ function cookiePerHour(obj)
 
 cookiePerHour(firstAndPike);
 
-function totalSold(obj) {
+function cookieArrayCreator(obj) {
   for (var i = 0; i < hours.length; i++)
   {
-    cookiePerHour(obj);
     var amount = cookiePerHour(obj);
     console.log(amount);
     var cookieSum = 0;
     cookieSum = cookieSum + amount;
     console.log(cookieSum);
-    cookieHours[i] = cookieSum;
-    console.log(cookieHours[i]);
+    cookieArray[i] = cookieSum;
+    console.log(cookieArray[i]);
   }
 
-  console.table(cookieSum);
-  return cookieSum;
+  console.table(cookieArray);
+  return cookieArray;
 };
 
-totalSold(firstAndPike);
+function totalOfTheDay(obj) {
+  var temp = cookieArrayCreator(obj);
+  var total = 0;
+  for (var i = 0; i < temp.length; i++) {
+    total = temp[i] + total;
+    console.log(total);
+  }
+
+  console.log(total);
+
+  // return total;
+};
+
+// console.log(totalOfTheDay(firstAndPike));
+
+console.log(cookieArrayCreator(firstAndPike));
 
 // console.log(cookieperHour(firstAndPike));
 // console.log(firstAndPike.randomNum(minimum, maximum));
