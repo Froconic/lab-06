@@ -1,7 +1,7 @@
 'use strict';
 
 var hours = ['6:00', '7:00', '8:00', '9:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00'];
-var cookieHours = ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'];
+var cookieHours = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
 var firstAndPike = {
   minCustomers: 23,
@@ -73,38 +73,43 @@ var aiki = {
   hours: ['6:00', '7:00', '8:00', '9:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00'],
 };
 
-function cookieperHour(obj)
+function cookiePerHour(obj)
 {
   var min = obj.minCustomers;
   var max = obj.maxCustomers;
 
   var cookie = obj.avgCookie;
-  console.log(cookie);
+  // console.log(cookie);
   var customerAmount = obj.randomNum(min, max);
-  console.log(customerAmount);
+  // console.log(customerAmount);
   var hourlyCookies = customerAmount * cookie;
-  console.log(hourlyCookies);
-  return hourlyCookies;
+  // console.log(hourlyCookies);
+  var sanHourlyCookies = Math.round(hourlyCookies);
+  return sanHourlyCookies;
 }
+
+cookiePerHour(firstAndPike);
 
 function totalSold(obj) {
   for (var i = 0; i < hours.length; i++)
   {
-
+    cookiePerHour(obj);
     var amount = cookiePerHour(obj);
     console.log(amount);
-    var cookieSum = '0';
+    var cookieSum = 0;
     cookieSum = cookieSum + amount;
     console.log(cookieSum);
     cookieHours[i] = cookieSum;
-    console.log(cookieHours);
+    console.log(cookieHours[i]);
   }
 
-  return CookieSum;
+  console.table(cookieSum);
+  return cookieSum;
 };
 
-// console.log(totalSold(firstAndPike));
-console.log(cookieperHour(firstAndPike));
+totalSold(firstAndPike);
+
+// console.log(cookieperHour(firstAndPike));
 // console.log(firstAndPike.randomNum(minimum, maximum));
 
 // console.log(firstAndPike.randomNum());
